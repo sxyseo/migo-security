@@ -31,8 +31,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.imageio.ImageIO;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -93,8 +95,13 @@ public class SysLoginController extends AbstractController {
      * 退出
      */
     @GetMapping("logout")
-    public String logout() {
-        ShiroUtils.logout();
-        return "redirect:login.html";
+    public R logout(HttpServletResponse response) throws IOException {
+        try {
+            ShiroUtils.logout();
+            response.sendRedirect("/login.html");
+            return R.ok();
+        } catch (Exception e) {
+            return R.error("账户退出失败！");
+        }
     }
 }
