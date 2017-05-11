@@ -102,7 +102,7 @@ migo-security
 - 通过git下载源码
 - 创建数据库migo-security，数据库编码为UTF-8
 - 执行sql/migo-security.sql文件，初始化数据【按需导入表结构及数据】
-- 修改migo-security.properties文件，更新MySQL账号和密码
+- 修改migo-common/src/main/resources/db.properties文件，更新MySQL账号和密码
 - Eclipse、IDEA执行【clean package tomcat7:run】命令，即可运行项目
 - 项目访问路径：[http://localhost:8080/](http://localhost:8080/)
 - 账号密码：admin/admin
